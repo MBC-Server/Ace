@@ -1,0 +1,16 @@
+name: Ace
+version: '${project.version}'
+main: smile.ace.ace.Ace
+api-version: 1.19
+commands:
+    ace:
+        aliases:
+            - ace
+        description: main command
+        usage: /ace
+        default: true
+        tab-complete: 0
+permissions:
+    ace.admin:
+        description: admin permission
+        default: op

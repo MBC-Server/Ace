@@ -1,0 +1,80 @@
+# config version
+version: 1
+
+
+
+# 跑图检测
+AntiCR:
+  # 功能开关 true为开
+  enable: true
+  # 检测间隔 单位ms
+  check-interval: 10000
+  # 不检测的世界
+  dont-check-worlds:
+    - "lobby"
+    - "parkour"
+  # 不检测的游戏模式
+  dont-check-gamemodes:
+    - "CREATIVE"
+    - "ADVENTURE"
+    - "SPECTATOR"
+  # 玩家重生后 减少设置值
+  respawn: 300
+  # 命令开头为设置值 就减少设置值
+  listen-command:
+    text:
+      - "tp"
+      - "mv tp"
+      - "rtp"
+      - "back"
+      - "warp"
+      - "home"
+    implement: 300
+  # 速度限制
+  speed:
+    # 限制时间 单位ms
+    interval: 10000
+    # 正常情况下的速度
+    normal:
+      walk: 0.2
+      fly: 0.1
+    # 限制情况下的速度
+    limit:
+      walk: 0.1
+      fly: 0.02
+  num:
+    # 执行值
+    implement: 1500
+    # 执行后减少到
+    after-implement: 1000
+    # 后面这四个数值 设置为0代表禁用
+    # 第一次判断 大于等于数值时
+    first-condition: 100
+    # 第一次判断返回为true就减少设置数值
+    first-reduce: 100
+    # 第二次判断 大于等于数值时
+    second-condition: 10
+    # 第二次判断返回为true就减少设置数值
+    second-reduce: 10
+# 卡顿检测
+Guard:
+  enable: true
+  # 检测间隔 单位ms
+  check-interval: 10000
+  # 内存检测
+  mem-check:
+    enable: true
+    # 占用百分比 当达到设置值及以上时 执行GC
+    percentage: 90
+  # TPS检测
+  tps-check:
+    enable: true
+    # 执行值 当TPS低于此值时 开始计算危险值
+    warn-threshold: 18
+    # 危险值 低于设置值时 立刻执行GC和区块回收
+    danger-threshold: 3
+  # MSPT检测
+  mspt-check:
+    enable: true
+    # MSPT数值 当达到设置值及以上时 执行GC
+    danger-threshold: 80
